@@ -30,7 +30,7 @@ const start = (bocchi = new Client()) => {
 
     // Uncomment code di bawah untuk mengaktifkan auto-update file changes. Tidak disarankan untuk long-time use.
     // Uncomment code below to activate auto-update file changes. Not recommended for long-time use.
-    // loader.nocache('../message/index.js', (m) => console.log(color('[WATCH]', 'orange'), color(`=> '${m}'`, 'yellow'), 'file is updated!'))
+     loader.nocache('../message/index.js', (m) => console.log(color('[WATCH]', 'orange'), color(`=> '${m}'`, 'yellow'), 'file is updated!'))
 
     bocchi.onStateChanged((state) => {
         console.log(color('[BOCCHI]'), state)
@@ -58,7 +58,7 @@ const start = (bocchi = new Client()) => {
     bocchi.onMessage((message) => {
         // Uncomment code di bawah untuk mengaktifkan auto-delete cache pesan.
         // Uncomment code below to activate auto-delete message cache.
-        /*
+        
         bocchi.getAmountOfLoadedMessages()
             .then((msg) => {
                 if (msg >= 1000) {
@@ -67,12 +67,12 @@ const start = (bocchi = new Client()) => {
                     console.log(color('[BOCCHI]'), color('Cache deleted!', 'yellow'))
                 }
             })
-        */
+        
         
         // Comment code msgHandler di bawah untuk mengaktifkan auto-update. Kemudian, uncomment code require di bawah msgHandler.
         // Comment code below to activate auto-update. Then, uncomment require code below msgHandler.
         msgHandler(bocchi, message)
-        // require('./message/index.js')(bocchi, message)
+         require('./message/index.js')(bocchi, message)
     })
 
     bocchi.onIncomingCall(async (callData) => {
